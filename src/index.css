@@ -1,0 +1,210 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #201d1d;
+  --color-on-primary: #fdfcfc;
+  --color-ink: #201d1d;
+  --color-ink-deep: #0f0000;
+  --color-charcoal: #302c2c;
+  --color-body: #424245;
+  --color-mute: #646262;
+  --color-stone: #6e6e73;
+  --color-ash: #9a9898;
+  --color-canvas: #fdfcfc;
+  --color-surface-soft: #f8f7f7;
+  --color-surface-card: #f1eeee;
+  --color-surface-dark: #201d1d;
+  --color-surface-dark-elevated: #302c2c;
+  --color-hairline: rgba(15, 0, 0, 0.12);
+  --color-hairline-strong: #646262;
+  --color-on-dark: #fdfcfc;
+  --color-on-dark-mute: #9a9898;
+  --color-accent: #007aff;
+  --color-accent-hover: #0056b3;
+  --color-accent-active: #004085;
+  --color-warning: #ff9f0a;
+  --color-warning-hover: #cc7f08;
+  --color-warning-active: #995f06;
+  --color-danger: #ff3b30;
+  --color-danger-hover: #d70015;
+  --color-danger-active: #a50011;
+  --color-success: #30d158;
+
+  --font-mono: "Berkeley Mono", "IBM Plex Mono", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  
+  --radius-none: 0px;
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 4px;
+}
+
+:root {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-primary: #fdfcfc;
+    --color-on-primary: #201d1d;
+    --color-ink: #fdfcfc;
+    --color-ink-deep: #ffffff;
+    --color-charcoal: #e5e2e2;
+    --color-body: #c7c4c4;
+    --color-mute: #8a8787;
+    --color-stone: #86868b;
+    --color-ash: #646262;
+    --color-canvas: #201d1d;
+    --color-surface-soft: #262323;
+    --color-surface-card: #2d2929;
+    --color-surface-dark: #121010;
+    --color-surface-dark-elevated: #1a1818;
+    --color-hairline: rgba(253, 252, 252, 0.12);
+    --color-hairline-strong: #8a8787;
+  }
+}
+
+@layer base {
+  html,
+  body,
+  #root,
+  * {
+    font-family: var(--font-mono);
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    min-height: 100vh;
+  }
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-canvas);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+}
+
+/* DESIGN.md strict compliance overrides */
+
+/* 1. Global typography & weights */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono) !important;
+  font-weight: 700 !important;
+  color: var(--color-ink) !important;
+}
+
+p, span, div, input, button, textarea, select {
+  font-family: var(--font-mono) !important;
+}
+
+/* 2. No drop shadows anywhere in the system */
+* {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* 3. Border Radius rules */
+/* Interactive elements, inputs, badges have 4px (rounded-sm) */
+.rounded-sm, .rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl {
+  border-radius: var(--radius-sm) !important; /* 4px */
+}
+
+/* Containers and sections are sharp 0px (rounded-none) */
+section, .section, .container {
+  border-radius: var(--radius-none) !important;
+}
+
+/* 4. Color Normalization to Warm Cream and Deep Charcoal Ink */
+.bg-canvas, .bg-white {
+  background-color: var(--color-canvas) !important;
+}
+
+.border-black {
+  border-color: var(--color-ink) !important;
+}
+
+.border-t-transparent {
+  border-top-color: transparent !important;
+}
+
+.hover\:bg-gray-100:hover, .hover\:bg-zinc-100:hover, .hover\:bg-slate-100:hover, .hover\:bg-gray-50:hover, .hover\:bg-gray-200:hover {
+  background-color: var(--color-surface-soft) !important;
+}
+
+.bg-gray-50, .bg-gray-100, .bg-zinc-50, .bg-slate-50,
+.bg-\[\#f3f4fa\], .bg-\[\#f3f4f8\], .bg-\[\#f3f4f7\], .bg-\[\#eef0f5\], .bg-\[\#e9f6ff\] {
+  background-color: var(--color-surface-soft) !important;
+}
+
+.bg-gray-200, .bg-zinc-100, .bg-slate-100, .bg-\[\#f1a0a0\] {
+  background-color: var(--color-surface-card) !important;
+}
+
+.border-gray-100, .border-gray-200, .border-gray-300, .border-zinc-200, .border-slate-200,
+.border-\[\#d4d8e5\], .border-\[\#d8dbe8\], .border-\[\#e0e3ec\], .border-\[\#d1d5e2\], .border-\[\#cce6fb\] {
+  border-color: var(--color-hairline) !important;
+}
+
+.text-gray-500, .text-gray-600, .text-zinc-500, .text-slate-500,
+.text-\[\#4d5568\], .text-\[\#44506a\], .text-\[\#60677a\], .text-\[\#323847\], .text-\[\#5f6f90\], .text-\[\#9aa1b1\], .text-\[\#83899a\], .text-\[\#565d72\] {
+  color: var(--color-mute) !important;
+}
+
+.text-gray-700, .text-gray-800, .text-zinc-700, .text-slate-700 {
+  color: var(--color-body) !important;
+}
+
+.text-gray-900, .text-zinc-900, .text-slate-900, .text-\[\#1f3f5d\] {
+  color: var(--color-ink) !important;
+}
+
+.border-\[\#53ca88\] {
+  border-color: var(--color-success) !important;
+}
+
+.bg-\[\#49c77f\] {
+  background-color: var(--color-success) !important;
+}
+
+/* 5. Force buttons and active states */
+.bg-black, .bg-\[\#ef2f2f\], .bg-red-600 {
+  background-color: var(--color-primary) !important;
+  color: var(--color-on-primary) !important;
+}
+
+.hover\:bg-gray-800:hover, .hover\:bg-zinc-800:hover, .hover\:bg-\[\#df2525\]:hover, .hover\:bg-red-700:hover {
+  background-color: var(--color-ink-deep) !important;
+}
+
+/* Ensure no scale/transitions violate the solid, flat feel */
+.hover\:-translate-y-0\.5, .hover\:scale-\[1\.02\] {
+  transform: none !important;
+}
+.active\:scale-\[0\.98\] {
+  transform: none !important;
+}
+
+@keyframes progress-stripes {
+  0% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
