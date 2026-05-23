@@ -15,7 +15,7 @@ export default function Layout() {
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center text-mute">
           <span>2026 ihatepdf</span>
           <a
-            href="https://github.com/borisevstratov/ihatepdf"
+            href="https://github.com/dpuwork/ihatepdf"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-ink underline uppercase tracking-wider font-bold"
