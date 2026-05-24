@@ -13,7 +13,17 @@ export default function Layout() {
       {/* Simplified, hyper-minimalist footer: {YEAR} ihatepdf   {link to github} */}
       <footer className="mt-auto bg-canvas border-t border-hairline py-6 font-mono text-xs">
         <div className="max-w-6xl mx-auto px-4 flex justify-between items-center text-mute">
-          <span>2026 ihatepdf</span>
+          <span>
+            ihatepdf by{" "}
+            <a
+              href="https://dpuwork.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-ink underline"
+            >
+              dpu
+            </a>
+          </span>
           <a
             href="https://github.com/dpuwork/ihatepdf"
             target="_blank"

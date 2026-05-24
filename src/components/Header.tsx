@@ -18,7 +18,7 @@ export default function Header() {
     <div className="font-mono text-ink">
       {/* Announcement Strip */}
       <div className="bg-surface-dark text-on-dark text-center py-2 text-xs font-bold uppercase tracking-wider border-b border-hairline">
-        All the files are processed locally. No server uploads. Ever.
+        100% Private: Your files never leave your device.
       </div>
 
       {/* Centerpiece Hero Block-ASCII Logo */}

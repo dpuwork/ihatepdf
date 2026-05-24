@@ -224,7 +224,7 @@ export default function CompressPage() {
             <div className="text-center mb-8">
               {result.compressedSize < result.originalSize ? (
                 <div className="inline-block bg-canvas border border-success/50 text-success px-6 py-3 rounded-sm font-bold text-base uppercase tracking-wider">
-                  [V] {getCompressionPercent(result.originalSize, result.compressedSize)}% smaller
+                  [✓] {getCompressionPercent(result.originalSize, result.compressedSize)}% smaller
                 </div>
               ) : (
                 <div className="inline-block bg-canvas border border-warning/50 text-warning px-6 py-3 rounded-sm font-bold text-xs uppercase tracking-wider">

@@ -319,20 +319,25 @@ export default function OrganizePdfPage() {
       )}
 
       {result && (
-        <div className="text-center p-8 bg-green-50 border-4 border-green-500 rounded-lg">
-          <div className="text-5xl mb-4">✅</div>
-          <h3 className="text-2xl font-black mb-2">PDF Organized!</h3>
-          <p className="text-gray-600 mb-6">{visiblePages.length} pages in your new PDF.</p>
-          <div className="flex gap-4 justify-center">
+        <div className="bg-surface-soft border border-hairline rounded-sm p-8 text-center space-y-6">
+          <div className="w-16 h-16 bg-success/10 text-success rounded-full flex items-center justify-center mx-auto">
+            <span className="text-2xl font-bold select-none">[✓]</span>
+          </div>
+          <h3 className="font-bold text-2xl uppercase tracking-wider text-ink">
+            PDF Organized!
+          </h3>
+          <p className="text-sm text-body">{visiblePages.length} pages in your new PDF.</p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
             <button
               onClick={handleDownload}
-              className="px-8 py-4 font-bold uppercase tracking-wide text-white bg-black border-4 border-black rounded-lg hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-[0_4px_0_#000] active:translate-y-0 active:shadow-none transition-all"
+              className="flex-1 py-3 px-6 bg-primary text-on-primary font-bold text-sm uppercase tracking-wider rounded-sm hover:bg-ink-deep transition-colors flex items-center justify-center gap-2"
             >
-              Download PDF
+              [+] Download PDF
             </button>
             <button
               onClick={handleReset}
-              className="px-8 py-4 font-bold uppercase tracking-wide border-4 border-black rounded-lg hover:bg-gray-100 transition-all"
+              className="py-3 px-6 border border-ink text-ink bg-canvas font-bold text-sm uppercase tracking-wider rounded-sm hover:bg-surface-soft transition-colors"
             >
               Process Another
             </button>

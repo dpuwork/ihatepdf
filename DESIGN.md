@@ -133,7 +133,7 @@ Every single operation is executed on the client-side via lightweight JS engines
 - **Robust Light/Dark Modes:** Full, reactive compatibility with user system preferences. The background transitions dynamically from warm cream (`#fdfcfc`) in light mode to near-black ink (`#201d1d`) in dark mode.
 - **ASCII Iconography & Accents:** Brackets (`[+]`, `[-]`, `[x]`, `[✓]`, `[!]`) are treated as interactive and visual glyphs, replacing standard SVG icon packs.
 - **ASCII Progress Indicator:** Operations show a customized CLI-like progress bar `[████████░░░░░░░░]` to mirror real terminal loading steps.
-- **WASM Client-Side Integrity:** The announcement strip at the top explicitly and clearly states: "All the files are processed locally. No server uploads. Ever."
+- **WASM Client-Side Integrity:** The announcement strip at the top explicitly and clearly states: "100% Private: Your files never leave your device."
 - **Strict Layout Boundaries:** Thin 1px borders (`border-hairline`) cleanly split sections, tool groups, staging cards, and results.
 
 ## Colors

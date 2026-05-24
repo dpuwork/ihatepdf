@@ -341,11 +341,11 @@ export default function SplitPage() {
         )}
 
         {file && !result && !isProcessing && (
-          <div className="overflow-hidden rounded-2xl border border-[#d4d8e5] bg-[#f3f4fa] shadow-sm">
+          <div className="overflow-hidden rounded-sm border border-hairline bg-surface-soft">
             {isLoadingPageCount || !pageCount ? (
-              <div className="flex min-h-90 items-center justify-center">
-                <div className="flex items-center gap-3 text-[#60677a]">
-                  <svg className="h-5 w-5 animate-spin" viewBox="0 0 24 24" fill="none">
+              <div className="flex min-h-[360px] items-center justify-center">
+                <div className="flex items-center gap-3 text-mute font-mono">
+                  <svg className="h-5 w-5 animate-spin text-ink" viewBox="0 0 24 24" fill="none">
                     <circle
                       className="opacity-25"
                       cx="12"
@@ -360,23 +360,23 @@ export default function SplitPage() {
                       d="M4 12a8 8 0 0 1 8-8v4a4 4 0 0 0-4 4H4Z"
                     />
                   </svg>
-                  <span className="font-semibold">Loading PDF pages...</span>
+                  <span className="font-bold uppercase tracking-wider text-sm">Loading PDF pages...</span>
                 </div>
               </div>
             ) : (
               <div className="grid xl:grid-cols-[1fr_430px]">
-                <div className="border-b border-[#d4d8e5] p-6 xl:border-b-0 xl:border-r xl:p-8">
+                <div className="border-b border-hairline p-6 xl:border-b-0 xl:border-r xl:p-8">
                   <div className="mb-6 flex flex-wrap items-center gap-3">
-                    <span className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-[#4d5568]">
+                    <span className="rounded-sm bg-canvas border border-hairline px-3 py-1 text-xs font-mono font-bold text-ink">
                       {file.name}
                     </span>
-                    <span className="rounded-full bg-white px-3 py-1 text-sm font-semibold text-[#4d5568]">
+                    <span className="rounded-sm bg-canvas border border-hairline px-3 py-1 text-xs font-mono font-bold text-ink">
                       {pageCount} {pageCount === 1 ? "page" : "pages"}
                     </span>
                     <button
                       type="button"
                       onClick={handleReset}
-                      className="ml-auto rounded-lg border border-[#d1d5e2] bg-white px-3 py-1.5 text-sm font-semibold text-[#4d5568] transition-colors hover:border-[#9299ab]"
+                      className="ml-auto rounded-sm border border-ink bg-canvas px-3 py-1.5 text-xs font-mono font-bold text-ink hover:bg-surface-soft transition-colors"
                     >
                       Change file
                     </button>
@@ -393,30 +393,22 @@ export default function SplitPage() {
                           key={pageNumber}
                           type="button"
                           onClick={() => handlePageToggle(pageNumber)}
-                          className={`relative rounded-xl border p-3 text-left shadow-sm transition ${splitMode === "selected" ? "cursor-pointer hover:-translate-y-0.5 hover:shadow-md" : "cursor-default"} ${isSelected ? "border-[#53ca88] bg-white" : "border-[#d8dbe8] bg-white"}`}
+                          className={`relative rounded-sm border p-3 text-left transition ${
+                            splitMode === "selected" ? "cursor-pointer hover:border-ink" : "cursor-default"
+                          } ${
+                            isSelected
+                              ? "border-success bg-canvas text-success"
+                              : "border-hairline bg-canvas text-ink"
+                          }`}
                         >
                           {isSelected && (
-                            <span className="absolute -left-2 -top-2 flex h-7 w-7 items-center justify-center rounded-full border-2 border-white bg-[#49c77f] text-white shadow-sm">
-                              <svg
-                                width="14"
-                                height="14"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                                aria-hidden="true"
-                              >
-                                <path
-                                  d="M16 6L8.5 13.5L4 9"
-                                  stroke="currentColor"
-                                  strokeWidth="2.4"
-                                  strokeLinecap="round"
-                                  strokeLinejoin="round"
-                                />
-                              </svg>
+                            <span className="absolute -left-2 -top-2 flex h-6 w-6 items-center justify-center rounded-sm border border-success bg-canvas text-success text-[10px] font-mono font-bold select-none">
+                              [✓]
                             </span>
                           )}
 
-                          <div className="mb-3 h-28 overflow-hidden rounded-sm border border-[#e0e3ec] bg-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.5)]">
-                            <div className="h-full w-full bg-[#f3f4f8]">
+                          <div className="mb-3 h-28 overflow-hidden rounded-sm border border-hairline bg-canvas">
+                            <div className="h-full w-full bg-surface-soft">
                               {thumbnail ? (
                                 <img
                                   src={thumbnail}
@@ -424,18 +416,18 @@ export default function SplitPage() {
                                   className="h-full w-full object-cover"
                                 />
                               ) : hasThumbnailError ? (
-                                <div className="flex h-full items-center justify-center text-sm font-semibold text-[#9098ac]">
+                                <div className="flex h-full items-center justify-center text-xs font-mono font-bold text-mute uppercase">
                                   Preview unavailable
                                 </div>
                               ) : (
-                                <div className="flex h-full items-center justify-center text-sm font-semibold text-[#9098ac]">
+                                <div className="flex h-full items-center justify-center text-xs font-mono font-bold text-mute uppercase">
                                   Rendering...
                                 </div>
                               )}
                             </div>
                           </div>
 
-                          <div className="text-center text-xl font-medium text-[#44506a]">
+                          <div className="text-center text-sm font-mono font-bold text-ink">
                             {pageNumber}
                           </div>
                         </button>
@@ -444,28 +436,36 @@ export default function SplitPage() {
                   </div>
 
                   {pageCount > previewPages.length && (
-                    <p className="mt-4 text-sm text-[#6b7285]">
+                    <p className="mt-4 text-xs font-mono font-bold text-mute uppercase tracking-wider">
                       Showing first {previewPages.length} pages in preview.
                     </p>
                   )}
                 </div>
 
-                <aside className="bg-white">
+                <aside className="bg-canvas border-t xl:border-t-0 xl:border-l border-hairline">
                   <div className="space-y-6 px-7 py-8">
                     <div>
-                      <p className="mb-3 text-2xl font-semibold text-[#343947]">Extract mode:</p>
+                      <p className="mb-3 text-sm font-bold uppercase tracking-wide text-ink">Extract mode:</p>
                       <div className="grid grid-cols-2 gap-3">
                         <button
                           type="button"
                           onClick={() => setSplitMode("all")}
-                          className={`rounded-xl border px-4 py-4 text-xl font-medium transition ${splitMode === "all" ? "border-[#ef4444] bg-white text-[#ef4444]" : "border-transparent bg-[#eef0f5] text-[#83899a] hover:text-[#565d72]"}`}
+                          className={`rounded-sm border px-4 py-3 text-xs font-bold uppercase tracking-wider transition ${
+                            splitMode === "all"
+                              ? "border-ink bg-primary text-on-primary"
+                              : "border-hairline bg-canvas text-mute hover:text-ink hover:border-ink"
+                          }`}
                         >
                           Extract all pages
                         </button>
                         <button
                           type="button"
                           onClick={() => setSplitMode("selected")}
-                          className={`rounded-xl border px-4 py-4 text-xl font-medium transition ${splitMode === "selected" ? "border-[#ef4444] bg-white text-[#ef4444]" : "border-transparent bg-[#eef0f5] text-[#83899a] hover:text-[#565d72]"}`}
+                          className={`rounded-sm border px-4 py-3 text-xs font-bold uppercase tracking-wider transition ${
+                            splitMode === "selected"
+                              ? "border-ink bg-primary text-on-primary"
+                              : "border-hairline bg-canvas text-mute hover:text-ink hover:border-ink"
+                          }`}
                         >
                           Select pages
                         </button>
@@ -473,7 +473,7 @@ export default function SplitPage() {
                     </div>
 
                     <div>
-                      <label className="mb-2 block text-2xl font-semibold text-[#343947]">
+                      <label className="mb-2 block text-sm font-bold uppercase tracking-wide text-ink">
                         Pages to extract:
                       </label>
                       <input
@@ -482,27 +482,33 @@ export default function SplitPage() {
                         onChange={(event) => setRangeInput(event.target.value)}
                         disabled={splitMode === "all"}
                         placeholder="1-2,4-6"
-                        className={`w-full rounded-lg border px-4 py-3 text-lg font-medium outline-none transition sm:text-xl ${rangeError ? "border-[#f48b8b] text-[#d43838] focus:border-[#ef4444]" : "border-[#aeb4c4] text-[#323847] focus:border-[#5f6f90]"} ${splitMode === "all" ? "cursor-not-allowed bg-[#f3f4f7] text-[#9aa1b1]" : "bg-white"}`}
+                        className={`w-full rounded-sm border px-4 py-3 font-mono text-lg font-bold outline-none transition sm:text-xl ${
+                          rangeError && splitMode === "selected"
+                            ? "border-danger text-danger focus:border-danger bg-canvas"
+                            : "border-ink text-ink focus:border-ink bg-canvas"
+                        } ${splitMode === "all" ? "cursor-not-allowed bg-surface-soft text-mute border-hairline" : ""}`}
                       />
                       {rangeError && splitMode === "selected" && (
-                        <p className="mt-2 text-sm font-medium text-[#d43737]">{rangeError}</p>
+                        <p className="mt-2 text-xs font-bold uppercase tracking-wide text-danger">{rangeError}</p>
                       )}
                     </div>
 
                     <label
-                      className={`flex items-start gap-3 text-xl text-[#404756] ${splitMode !== "selected" ? "opacity-50" : ""}`}
+                      className={`flex items-center gap-3 text-xs font-mono uppercase tracking-wider text-ink cursor-pointer ${
+                        splitMode !== "selected" ? "opacity-50 cursor-not-allowed" : ""
+                      }`}
                     >
                       <input
                         type="checkbox"
                         checked={mergeSelectedPages}
                         onChange={(event) => setMergeSelectedPages(event.target.checked)}
                         disabled={splitMode !== "selected"}
-                        className="mt-1 h-7 w-7 rounded border border-[#9da4b7] accent-[#ef4444]"
+                        className="h-5 w-5 rounded-sm border border-hairline accent-primary bg-canvas"
                       />
-                      <span>Merge extracted pages into one PDF file.</span>
+                      <span>Merge extracted pages</span>
                     </label>
 
-                    <div className="rounded-lg border border-[#cce6fb] bg-[#e9f6ff] px-4 py-5 text-lg text-[#1f3f5d]">
+                    <div className="rounded-sm border border-accent/20 bg-accent/5 px-4 py-4 text-xs font-mono text-ink leading-relaxed">
                       {infoText}
                     </div>
 
@@ -510,25 +516,13 @@ export default function SplitPage() {
                       type="button"
                       onClick={handleSplit}
                       disabled={!canSplit}
-                      className={`flex w-full items-center justify-center gap-2 rounded-2xl px-6 py-5 text-2xl font-bold text-white transition sm:text-3xl ${canSplit ? "bg-[#ef2f2f] hover:bg-[#df2525]" : "cursor-not-allowed bg-[#f1a0a0]"}`}
+                      className={`w-full py-4 px-6 font-bold text-base uppercase tracking-wider rounded-sm transition-colors flex items-center justify-center gap-2 ${
+                        canSplit
+                          ? "bg-primary text-on-primary hover:bg-ink-deep"
+                          : "bg-surface-card text-ash cursor-not-allowed border border-hairline"
+                      }`}
                     >
-                      <span>Split PDF</span>
-                      <svg
-                        width="28"
-                        height="28"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-                        <path
-                          d="M10 8L14 12L10 16"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                      <span>[+] Split PDF</span>
                     </button>
                   </div>
                 </aside>
@@ -560,30 +554,24 @@ export default function SplitPage() {
         )}
 
         {result && (
-          <div className="rounded-2xl bg-gray-50 p-8">
-            <h3 className="mb-6 text-center text-2xl font-black">Split Complete</h3>
+          <div className="bg-surface-soft border border-hairline rounded-sm p-8 text-center space-y-6">
+            <div className="w-16 h-16 bg-success/10 text-success rounded-full flex items-center justify-center mx-auto">
+              <span className="text-2xl font-bold select-none">[✓]</span>
+            </div>
+            <h3 className="font-bold text-2xl uppercase tracking-wider text-ink">Split Complete</h3>
 
-            <div className="mb-8 text-center">
-              <div className="inline-block rounded-full bg-green-100 px-6 py-3 font-bold text-green-700">
-                Created {result.pages.length} {result.pages.length === 1 ? "file" : "files"} from{" "}
-                {result.totalPages} pages
+            <div className="text-center">
+              <div className="inline-block bg-canvas border border-success/50 text-success px-6 py-3 rounded-sm font-bold text-base uppercase tracking-wider">
+                [✓] Created {result.pages.length} {result.pages.length === 1 ? "file" : "files"} from {result.totalPages} pages
               </div>
             </div>
 
             {result.pages.length > 1 && (
               <button
                 onClick={handleDownloadAll}
-                className="mb-6 flex w-full items-center justify-center gap-3 rounded-xl bg-black px-8 py-4 text-xl font-black text-white transition-all duration-200 hover:scale-[1.02] hover:bg-gray-800 active:scale-[0.98]"
+                className="w-full py-3 px-6 bg-primary text-on-primary font-bold text-sm uppercase tracking-wider rounded-sm hover:bg-ink-deep transition-colors flex items-center justify-center gap-2"
               >
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16v1a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3v-1m-4-4-4 4m0 0-4-4m4 4V4"
-                  />
-                </svg>
-                Download All as ZIP
+                [+] Download All as ZIP
               </button>
             )}
 
@@ -591,22 +579,22 @@ export default function SplitPage() {
               {result.pages.map((page, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between rounded-xl border-2 border-gray-200 bg-white p-4 transition-all duration-200 hover:border-black"
+                  className="flex items-center justify-between rounded-sm border border-hairline bg-canvas p-4 transition-colors hover:border-ink"
                 >
                   <div className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gray-100 font-black text-gray-600">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-sm bg-surface-soft font-mono font-bold text-ink border border-hairline">
                       {page.pageNumbers.length === 1
                         ? page.pageNumbers[0]
                         : `${page.pageNumbers[0]}-${page.pageNumbers[page.pageNumbers.length - 1]}`}
                     </div>
-                    <div>
-                      <div className="text-sm font-bold">{page.fileName}</div>
-                      <div className="text-xs text-gray-500">{formatBytes(page.blob.size)}</div>
+                    <div className="text-left">
+                      <div className="text-sm font-bold text-ink">{page.fileName}</div>
+                      <div className="text-xs text-mute uppercase">{formatBytes(page.blob.size)}</div>
                     </div>
                   </div>
                   <button
                     onClick={() => handleDownloadSingle(page)}
-                    className="rounded-lg bg-gray-100 px-4 py-2 font-bold transition-all duration-200 hover:bg-black hover:text-white"
+                    className="py-1 px-3 border border-ink text-ink bg-canvas font-mono font-bold text-xs uppercase tracking-wider rounded-sm hover:bg-surface-soft transition-colors"
                   >
                     Download
                   </button>
@@ -614,16 +602,16 @@ export default function SplitPage() {
               ))}
             </div>
 
-            <div className="mt-6 flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={handleTryAgain}
-                className="flex-1 rounded-xl border-2 border-black px-8 py-4 text-xl font-black transition-all duration-200 hover:bg-gray-100"
+                className="flex-1 py-3 px-6 border border-ink text-ink bg-canvas font-bold text-sm uppercase tracking-wider rounded-sm hover:bg-surface-soft transition-colors"
               >
                 Try Split Again
               </button>
               <button
                 onClick={handleReset}
-                className="flex-1 rounded-xl border-2 border-black px-8 py-4 text-xl font-black transition-all duration-200 hover:bg-gray-100"
+                className="flex-1 py-3 px-6 border border-ink text-ink bg-canvas font-bold text-sm uppercase tracking-wider rounded-sm hover:bg-surface-soft transition-colors"
               >
                 New File
               </button>

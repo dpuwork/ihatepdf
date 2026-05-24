@@ -242,22 +242,22 @@ export default function PdfToJpgPage() {
       {/* Results */}
       {images.length > 0 && (
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <p className="font-bold text-gray-600">
-              {images.length} image{images.length !== 1 ? "s" : ""} — {formatBytes(totalSize)} total
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-surface-soft border border-hairline rounded-sm p-4">
+            <p className="font-bold text-ink">
+              [✓] {images.length} image{images.length !== 1 ? "s" : ""} ready — {formatBytes(totalSize)} total
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 w-full sm:w-auto">
               <button
                 onClick={handleReset}
-                className="px-6 py-3 font-bold uppercase tracking-wide border-4 border-gray-300 rounded-lg hover:bg-gray-100 transition-all"
+                className="flex-1 sm:flex-none py-2 px-4 border border-ink text-ink bg-canvas font-bold text-xs uppercase tracking-wider rounded-sm hover:bg-surface-soft transition-colors"
               >
                 Process Another
               </button>
               <button
                 onClick={downloadAll}
-                className="px-6 py-3 font-bold uppercase tracking-wide text-white bg-black border-4 border-black rounded-lg hover:bg-gray-800 hover:-translate-y-0.5 hover:shadow-[0_4px_0_#000] active:translate-y-0 active:shadow-none transition-all"
+                className="flex-1 sm:flex-none py-2 px-4 bg-primary text-on-primary font-bold text-xs uppercase tracking-wider rounded-sm hover:bg-ink-deep transition-colors flex items-center justify-center gap-2"
               >
-                {images.length === 1 ? "Download Image" : "Download All as ZIP"}
+                [+] {images.length === 1 ? "Download Image" : "Download All as ZIP"}
               </button>
             </div>
           </div>
@@ -266,18 +266,18 @@ export default function PdfToJpgPage() {
             {previews.map((preview, index) => (
               <div
                 key={index}
-                className="relative group rounded-lg overflow-hidden border-4 border-gray-200 hover:border-gray-400 transition-all"
+                className="relative group rounded-sm overflow-hidden border border-hairline bg-canvas hover:border-ink transition-colors"
               >
                 <img src={preview} alt={`Page ${index + 1}`} className="w-full h-auto" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/30 transition-opacity">
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-surface-dark/40 transition-opacity">
                   <button
                     onClick={() => downloadSingle(index)}
-                    className="px-4 py-2 font-bold text-sm uppercase tracking-wide text-white bg-black rounded-lg hover:bg-gray-800 transition-colors"
+                    className="py-1 px-3 bg-primary text-on-primary font-mono font-bold text-xs uppercase tracking-wider rounded-sm hover:bg-ink-deep transition-colors"
                   >
                     Download
                   </button>
                 </div>
-                <span className="absolute bottom-0 inset-x-0 text-center text-xs font-bold py-1 bg-black/70 text-white">
+                <span className="absolute bottom-0 inset-x-0 text-center text-[10px] font-mono tracking-wider uppercase font-bold py-1 bg-surface-dark/95 text-on-dark border-t border-hairline">
                   Page {index + 1} — {formatBytes(images[index].data.size)}
                 </span>
               </div>
