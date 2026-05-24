@@ -124,7 +124,7 @@ components:
 
 ## Overview
 
-iHatePDF is a local-first, client-side, developer-centric terminal-native web tool suite designed to manipulate, edit, split, merge, convert, and protect PDF files entirely inside the user's web browser. The visual identity of iHatePDF comes from a strict, minimalist developer-centric aesthetic: the entire site reads like a terminal-native dashboard, styled with bracketed ASCII indicators like `[+]`, `[-]`, `[x]`, `[✓]`, `[!]` in place of graphical icons, bordered layout containers with a uniform `4px` corner radius (`rounded-sm`), and a massive, dynamic block-ASCII wordmark defining the brand header.
+ihatepdf is a local-first, client-side, developer-centric terminal-native web tool suite designed to manipulate, edit, split, merge, convert, and protect PDF files entirely inside the user's web browser. The visual identity of ihatepdf comes from a strict, minimalist developer-centric aesthetic: the entire site reads like a terminal-native dashboard, styled with bracketed ASCII indicators like `[+]`, `[-]`, `[x]`, `[✓]`, `[!]` in place of graphical icons, bordered layout containers with a uniform `4px` corner radius (`rounded-sm`), and a massive, dynamic block-ASCII wordmark defining the brand header.
 
 Every single operation is executed on the client-side via lightweight JS engines or WebAssembly (WASM). No data is ever uploaded to a remote server. The layout, headers, buttons, inputs, and utilities reinforce this promise of local data integrity and high performance through clean typographic structures and an ultra-functional layout design.
 
@@ -138,7 +138,7 @@ Every single operation is executed on the client-side via lightweight JS engines
 
 ## Colors
 
-iHatePDF utilizes a dynamic, responsive color ladder that supports both light and dark systems cleanly, mapped via native `@theme` configurations.
+ihatepdf utilizes a dynamic, responsive color ladder that supports both light and dark systems cleanly, mapped via native `@theme` configurations.
 
 ### Color Table
 

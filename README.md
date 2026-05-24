@@ -1,11 +1,11 @@
-# iHatePDF
+# ihatepdf
 
 We all hate online PDF tools. They are slow, packed with annoying ads, force you to sign up, and make you upload your private documents to random servers. 
 
-**iHatePDF** is a simple, private alternative. It runs 100% in your browser. Your files never leave your computer.
+**ihatepdf** is a simple, private alternative. It runs 100% in your browser. Your files never leave your computer.
 
 ## Preview
-![iHatePDF preview](assets/screenshot.png)
+![ihatepdf preview](assets/screenshot.png)
 
 ## What it can do
 

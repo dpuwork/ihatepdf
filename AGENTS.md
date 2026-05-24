@@ -1,4 +1,4 @@
-# OpenCode Agent Instructions — iHatePDF
+# OpenCode Agent Instructions — ihatepdf
 
 This document contains repo-specific constraints, quirks, and configurations to prevent agents from breaking things or wasting time.
 
